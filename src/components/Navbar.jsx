@@ -19,6 +19,9 @@ const Navbar = () => {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
               <Link to="/loanform" className="nav-link">
                 LoanForm
               </Link>
@@ -49,6 +52,9 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-blue-500 transition duration-300">
           <div className="flex flex-col items-center py-2 space-y-2">
+            <Link to="/" className="nav-link-mobile" onClick={toggleMenu}>
+              Home
+            </Link>
             <Link
               to="/loanform"
               className="nav-link-mobile"

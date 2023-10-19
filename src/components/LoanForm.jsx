@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 function LoanForm() {
@@ -6,7 +7,7 @@ function LoanForm() {
   const [loanPeriod, setLoanPeriod] = useState('');
   const [startDate, setStartDate] = useState('');
   const [interestType, setInterestType] = useState('flatRate');
-
+  const [selectedBank, setSelectedBank] = useState('BankA');
   const [loading, setLoading] = useState(false);
   const [loanDetails, setLoanDetails] = useState(null);
   const [error, setError] = useState(null);
@@ -16,17 +17,16 @@ function LoanForm() {
     setLoading(true);
     setError(null);
 
-    // Prepare the data to send to the backend
     const data = {
       loanAmount,
       paymentFrequency,
       loanPeriod,
       startDate,
       interestType,
+      selectedBank,
     };
 
     try {
-      // Send data to the backend API for loan calculation
       const response = await fetch('/api/calculate-loan', {
         method: 'POST',
         headers: {
@@ -49,7 +49,7 @@ function LoanForm() {
   };
 
   return (
-    <div className="bg-yellow-300 p-6 rounded-lg shadow-lg w-full sm:w-2/3 md:w-1/2 lg:w-1/3 mx-auto my-8">
+    <div className="bg-yellow-600 p-6 rounded-lg shadow-lg w-full sm:w-2/3 md:w-1/2 lg:w-1/3 mx-auto my-8">
       <h2 className="text-2xl text-center mb-4">Loan Details</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -127,9 +127,23 @@ function LoanForm() {
             Reducing Balance
           </label>
         </div>
+        <div className="mb-4">
+          <label htmlFor="selectedBank" className="block">
+            Select Bank:
+          </label>
+          <select
+            id="selectedBank"
+            className="w-full p-2 border border-gray-300 rounded"
+            value={selectedBank}
+            onChange={(e) => setSelectedBank(e.target.value)}
+          >
+            <option value="BankA">Bank A</option>
+            <option value="BankB">Bank B</option>
+          </select>
+        </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+          className="bg-blue-500 text-white py-2 px-4 rounded hover-bg-blue-700"
           disabled={loading}
         >
           {loading ? 'Calculating...' : 'Calculate Loan'}
