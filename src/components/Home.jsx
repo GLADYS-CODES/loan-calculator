@@ -35,7 +35,7 @@ function Home() {
   return (
     <div className="bg-blue-400 h-screen flex flex-col justify-center items-center">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full sm:w-2/3 md:w-1/2 lg:w-1/3">
-        <h2 className="text-2xl text-center mb-4">Welcome to the Loan Calculator</h2>
+        <h2 className="text-2xl text-center mb-4">Welcome </h2>
         {error && <div className="text-red-500 text-center mb-4">{error}</div>}
         <form className="mb-4">
           <div className="mb-4">

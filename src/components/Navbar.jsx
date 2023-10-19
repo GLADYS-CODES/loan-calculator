@@ -28,9 +28,7 @@ const Navbar = () => {
               <Link to="/loanresults" className="nav-link">
                 LoanResults
               </Link>
-              <Link to="/comparisontable" className="nav-link">
-                ComparisonTable
-              </Link>
+             
             </div>
           </div>
           <div className="block md:hidden">
@@ -69,13 +67,7 @@ const Navbar = () => {
             >
               LoanResults
             </Link>
-            <Link
-              to="/comparisontable"
-              className="nav-link-mobile"
-              onClick={toggleMenu}
-            >
-              ComparisonTable
-            </Link>
+           
           </div>
         </div>
       )}
